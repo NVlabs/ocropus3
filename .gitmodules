@@ -19,3 +19,6 @@
 [submodule "cctc"]
 	path = cctc
 	url = git://github.com/tmbdev/cctc.git
+[submodule "das2018-tutorial"]
+	path = das2018-tutorial
+	url = https://github.com/tmbdev/das2018-tutorial.git

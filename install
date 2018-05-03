@@ -1,0 +1,8 @@
+#!/bin/bash
+(cd cctc && sudo python setup.py install)
+(cd dlinputs && sudo python setup.py install)
+(cd dltrainers && sudo python setup.py install)
+(cd ocrobin && sudo python setup.py install)
+(cd ocroline && sudo python setup.py install)
+(cd ocrorot && sudo python setup.py install)
+(cd ocroseg && sudo python setup.py install)

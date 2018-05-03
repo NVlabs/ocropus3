@@ -1,0 +1,21 @@
+[submodule "dlinputs"]
+	path = dlinputs
+	url = git://github.com/NVlabs/dlinputs.git
+[submodule "dltrainers"]
+	path = dltrainers
+	url = git://github.com/NVlabs/dltrainers.git
+[submodule "ocrobin"]
+	path = ocrobin
+	url = git://github.com/NVlabs/ocrobin.git
+[submodule "ocrorot"]
+	path = ocrorot
+	url = git://github.com/NVlabs/ocrorot.git
+[submodule "ocroseg"]
+	path = ocroseg
+	url = git://github.com/NVlabs/ocroseg.git
+[submodule "ocroline"]
+	path = ocroline
+	url = git://github.com/NVlabs/ocroline.git
+[submodule "cctc"]
+	path = cctc
+	url = git://github.com/tmbdev/cctc.git

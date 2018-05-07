@@ -22,3 +22,6 @@
 [submodule "das2018-tutorial"]
 	path = das2018-tutorial
 	url = https://github.com/tmbdev/das2018-tutorial.git
+[submodule "ocrodeg"]
+	path = ocrodeg
+	url = https://github.com/NVlabs/ocrodeg.git

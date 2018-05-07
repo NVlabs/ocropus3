@@ -6,3 +6,4 @@
 (cd ocroline && sudo python setup.py install)
 (cd ocrorot && sudo python setup.py install)
 (cd ocroseg && sudo python setup.py install)
+(cd ocrodeg && sudo python setup.py install)

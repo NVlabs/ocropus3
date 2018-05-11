@@ -3,6 +3,6 @@ PyTorch-based OCRopus3 OCR system.
 
 To install:
 
-    git clone https://github.com/NVlabs/ocropus3
+    git clone https://github.com/NVlabs/ocropus3 --recursive
     cd ocropus3
     ./install

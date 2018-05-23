@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if test "$DATA_PROXY" = ""; then
+    sudo nginx
+    http_proxy=http://localhost:3128
+else
+    http_proxy="$DATA_PROXY"
+fi
+export http_proxy
+
+daemon -n vnc -- tightvncserver -geometry 1600x900 :99
+export DISPLAY=:99
+
+set -x
+"$@"

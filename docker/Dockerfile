@@ -16,11 +16,9 @@ RUN  apt-get -y install sudo lsb-release build-essential curl software-propertie
 
 RUN apt-get -y install wget tightvncserver tmux rxvt \
     xterm mlterm imagemagick firefox blackbox imagemagick \
-    vim-gtk gnome-terminal i3 chromium-browser git mercurial lynx
+    vim-gtk gnome-terminal i3 chromium-browser git mercurial lynx daemon
 
 RUN apt-get -y install nginx
-COPY nginx.conf /etc/nginx
-EXPOSE 3218
 
 RUN cd /tmp \
     && wget --quiet -nd https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh \
@@ -69,6 +67,9 @@ ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64
 ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
 ENV PATH /opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
+COPY nginx.conf /etc/nginx
+EXPOSE 3218
+
 RUN mkdir -p $HOME && groupadd -g $GID -r $USER && useradd --no-log-init -u $UID -r -g $USER $USER
 
 RUN mkdir -p $HOME/.jupyter $HOME/.vnc $HOME/.ssh
@@ -80,9 +81,11 @@ RUN true \
     && echo ". /opt/conda/etc/profile.d/conda.sh" >> $HOME/.bashrc \
     && echo "conda activate base" >> $HOME/.bashrc \
     && chown -R $USER.$USER $HOME
+RUN echo 'user ALL=(ALL:ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 USER $UID
-CMD /opt/conda/bin/jupyter notebook --allow-root --certfile=$HOME/.jupyter/mycert.pem --keyfile $HOME/.jupyter/mykey.key --port 8888 --no-browser --ip=*
+ENTRYPOINT ["runcmd"]
+#CMD /opt/conda/bin/jupyter notebook --allow-root --certfile=$HOME/.jupyter/mycert.pem --keyfile $HOME/.jupyter/mykey.key --port 8888 --no-browser --ip=*
 # ENTRYPOINT /opt/conda/bin/ipython
 
 #

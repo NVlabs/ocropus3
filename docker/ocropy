@@ -1,15 +1,11 @@
 #!/bin/bash
 
-local_ip=$(ip route get 8.8.8.8 | awk '{print $NF; exit}')
-export http_proxy=${http_proxy:-http://$local_ip:3128}
-export http_proxy=${DATA_PROXY:-$http_proxy}
-curl http://checkip.amazonaws.com || {
-    echo
-    echo "WARNING:"
-    echo "DATA_PROXY=$http_proxy not working, remote datasets won't load"
-    echo "please run a caching web proxy to access remote datasets"
-    echo "and set the DATA_PROXY environment variable to point to it"
-    echo
-}
-
-exec nvidia-docker run -v $(pwd):/work -w /work -e http_proxy=$http_proxy --net host -p 8888:8888 -ti ocropy "$@"
+exec nvidia-docker run \
+    -v $(pwd):/work \
+    -v ${DATA_CACHE:-$HOME/CACHE}:/cache \
+    -w /work \
+    -e DATA_PROXY="$DATA_PROXY" \
+    --net host \
+    -p 3128:3128 \
+    -p 5999:5999 \
+    -p 8888:8888 -ti ocropy "$@"

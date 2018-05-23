@@ -1,1 +1,5 @@
-docker build -t ocropus3 .
+#!/bin/bash
+test -f vnc_config/passwd || echo "you should set a VNC password (see vnc_config/README)"
+test -f jupyter_config/jupyter_notebook_config.json || echo "you should set a Jupyter password (see jupyter_config/README)"
+test -f jupyter_config/mykey.key || echo "you should configure an SSL key (see jupyter_config/README)"
+docker build -t ocropy .

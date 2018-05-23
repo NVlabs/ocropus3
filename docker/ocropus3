@@ -1,2 +1,0 @@
-#!/bin/bash
-exec docker run --net host -v $(pwd):/work -w /work -ti ocropus3 ipython "$@"

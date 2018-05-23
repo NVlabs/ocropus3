@@ -1,0 +1,3 @@
+Set a VNC password with:
+
+    vncpasswd passwd

@@ -1,0 +1,7 @@
+xmodmap -e 'keysym Alt_L = Meta_L'
+xmodmap -e 'keysym Alt_R = Meta_R'
+xmodmap -e 'clear Mod1'
+xmodmap -e 'add Mod1 = Meta_L Meta_R'
+(sleep 1; xsetroot -solid '#555') &
+rxvt &
+blackbox

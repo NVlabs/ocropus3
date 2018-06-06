@@ -1,0 +1,5 @@
+#!/bin/bash -x
+prefix=/usr/local/lib/python2.7/dist-packages
+for d in cctc dlinputs dltrainers ocrobin ocroline ocrorot ocroseg ocrodeg; do
+    sudo rm -rf $prefix/$d
+done

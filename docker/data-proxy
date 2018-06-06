@@ -1,6 +1,0 @@
-#!/bin/bash
-DATA_CACHE="${DATA_CACHE:-$HOME/CACHE}"
-DATA_PORT=3128
-test -d $DATA_CACHE || echo "${DATA_CACHE}: cache directory not found"
-echo "running proxy server on ${DATA_PORT} with cache in ${DATA_CACHE}"
-docker run -v $DATA_CACHE:/cache -p $DATA_PORT:3128 --user 0 -ti ocropy nginx -g 'daemon off;'

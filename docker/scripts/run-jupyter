@@ -1,8 +1,0 @@
-#!/bin/bash --login
-
-tightvncserver -geometry 1600x900 :0 &
-export DISPLAY=:0
-
-/opt/conda/bin/jupyter notebook --allow-root \
-    --certfile=$HOME/.jupyter/mycert.pem --keyfile $HOME/.jupyter/mykey.key \
-    --port 8888 --no-browser --ip=*
